@@ -1,0 +1,1 @@
+# krafttex_postinstall_script
