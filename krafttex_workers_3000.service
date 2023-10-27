@@ -1,0 +1,19 @@
+# DISABLE SELINUX!
+# journalctl -u krafttex_workers_3000.service -f
+# kopirati u /usr/lib/systemd/system/
+# napraviti link u /etc/systemd/system (izgleda da ne mora)
+
+[Unit]
+Description=Krafttex workers version 3000
+
+[Service]
+User=root
+WorkingDirectory=/opt/workers
+ExecStart=/opt/workers/worker
+Restart=always
+RestartSec=3
+StandardOutput=append:/opt/workers/info.log
+StandardError=append:/opt/workers/error.log
+
+[Install]
+WantedBy=multi-user.target
