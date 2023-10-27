@@ -9,6 +9,6 @@ update-crypto-policies --set DEFAULT
 dnf -y update
 systemctl enable mariadb.service
 systemctl enable httpd.service
-firewall-cmd --add-port=3000/tcp
-firewall-cmd --add-port=80/tcp
+firewall-cmd --permanent --add-port=3000/tcp
+firewall-cmd --permanent --add-port=80/tcp
 # --skip-broken --nobest
