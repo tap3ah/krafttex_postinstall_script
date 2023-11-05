@@ -12,3 +12,16 @@ systemctl enable httpd.service
 firewall-cmd --permanent --add-port=3000/tcp
 firewall-cmd --permanent --add-port=80/tcp
 # --skip-broken --nobest
+sed 's/^SELINUX=enforcing$/SELINUX=disabled/g' /etc/selinux/config
+cp files/krafttex_workers_3000.service /usr/lib/systemd/system/
+cp files/krafttexMOD.motd /etc/motd.d/
+dnf -y install cockpit
+systemctl enable cockpit.socket
+cp files/disallowed-users /etc/cockpit
+cp files/branding.css /usr/share/cockpit/branding/rhel
+cp files/logo.png /usr/share/cockpit/branding/rhel
+dnf -y install chrony
+systemctl enable chronyd
+cp files/chrony.conf /etc/
+reboot
+
