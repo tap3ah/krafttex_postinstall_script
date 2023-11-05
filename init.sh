@@ -4,8 +4,8 @@ dnf install -y mariadb-server
 dnf -y install httpd
 dnf install https://rpm.nodesource.com/pub_21.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
 update-crypto-policies --set DEFAULT:SHA1
-dnf install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1
-update-crypto-policies --set DEFAULT
+#update-crypto-policies --set DEFAULT
+dnf -y install nodejs --setopt=nodesource-nodejs.module_hotfixes=1
 dnf -y update
 systemctl enable mariadb.service
 systemctl enable httpd.service
@@ -24,4 +24,3 @@ dnf -y install chrony
 systemctl enable chronyd
 cp files/chrony.conf /etc/
 reboot
-
