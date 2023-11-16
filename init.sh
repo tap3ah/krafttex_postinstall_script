@@ -2,6 +2,7 @@ dnf -y update
 dnf -y install mariadb
 dnf install -y mariadb-server
 dnf -y install httpd
+dnf -y install nano
 dnf install https://rpm.nodesource.com/pub_21.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
 update-crypto-policies --set DEFAULT:SHA1
 #update-crypto-policies --set DEFAULT
@@ -14,6 +15,9 @@ firewall-cmd --permanent --add-port=80/tcp
 # --skip-broken --nobest
 sed 's/^SELINUX=enforcing$/SELINUX=disabled/g' /etc/selinux/config
 cp files/krafttex_workers_3000.service /usr/lib/systemd/system/
+cp files/krafttex_api.service /usr/lib/systemd/system/
+#systemctl enable krafttex_workers_3000.service
+#systemctl enable krafttex_api.service
 cp files/krafttexMOD.motd /etc/motd.d/
 dnf -y install cockpit
 systemctl enable cockpit.socket
@@ -23,4 +27,6 @@ cp files/logo.png /usr/share/cockpit/branding/rhel
 dnf -y install chrony
 systemctl enable chronyd
 cp files/chrony.conf /etc/
+mysql -h localhost -u root -r < files/root.sql
+mysql -h localhost -u root -r raus < files/db.sql
 reboot

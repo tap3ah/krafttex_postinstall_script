@@ -8,12 +8,14 @@ Description=Krafttex workers version 3000
 
 [Service]
 User=root
-WorkingDirectory=/opt/workers
-ExecStart=/opt/workers/worker
+WorkingDirectory=/home/krafttex
+ExecStart=/home/krafttex/worker
 Restart=always
 RestartSec=3
-StandardOutput=append:/opt/workers/info.log
-StandardError=append:/opt/workers/error.log
+StandardOutput=null
+StandardError=journal
+#StandardOutput=append:/home/krafttex/worker_info.log
+#StandardError=append:/home/krafttex/worker_error.log
 
 [Install]
 WantedBy=multi-user.target
