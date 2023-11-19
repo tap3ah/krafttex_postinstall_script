@@ -13,7 +13,7 @@ systemctl enable httpd.service
 firewall-cmd --permanent --add-port=3000/tcp
 firewall-cmd --permanent --add-port=80/tcp
 # --skip-broken --nobest
-sed 's/^SELINUX=enforcing$/SELINUX=disabled/g' /etc/selinux/config
+sed -i 's/^SELINUX=enforcing$/SELINUX=disabled/g' /etc/selinux/config
 cp files/krafttex_workers_3000.service /usr/lib/systemd/system/
 cp files/krafttex_api.service /usr/lib/systemd/system/
 #systemctl enable krafttex_workers_3000.service
