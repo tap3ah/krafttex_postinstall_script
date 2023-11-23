@@ -1,0 +1,21 @@
+# DISABLE SELINUX!
+# journalctl -u krafttex_api.service -f
+# kopirati u /usr/lib/systemd/system/
+# napraviti link u /etc/systemd/system (izgleda da ne mora)
+
+[Unit]
+Description=Krafttex API server
+
+[Service]
+User=root
+WorkingDirectory=/home/krafttex
+ExecStart=node server.js
+Restart=always
+RestartSec=3
+StandardOutput=null
+StandardError=journal
+#StandardOutput=append:/home/krafttex/api_info.log
+#StandardError=append:/home/krafttex/api_error.log
+
+[Install]
+WantedBy=multi-user.target

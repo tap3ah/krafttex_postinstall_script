@@ -1,0 +1,4 @@
+SET PASSWORD FOR 'root'@localhost = PASSWORD("krafttex2022");
+CREATE USER 'root'@'%' IDENTIFIED BY 'krafttex2022';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+CREATE DATABASE raus;
