@@ -10,7 +10,6 @@ Description=Krafttex workers version 3000
 User=root
 WorkingDirectory=/home/krafttex
 ExecStart=/home/krafttex/worker
-Environment="NODE_ENV=production"
 Restart=always
 RestartSec=3
 StandardOutput=null
