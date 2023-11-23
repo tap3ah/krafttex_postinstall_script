@@ -9,6 +9,7 @@ Description=Krafttex API server
 [Service]
 User=root
 WorkingDirectory=/home/krafttex
+Environment="NODE_ENV=production"
 ExecStart=node server.js
 Restart=always
 RestartSec=3
