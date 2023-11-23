@@ -8,6 +8,8 @@ update-crypto-policies --set DEFAULT:SHA1
 #update-crypto-policies --set DEFAULT
 dnf -y install nodejs --setopt=nodesource-nodejs.module_hotfixes=1
 dnf -y update
+echo '[mysqld_safe]' >> /etc/my.cnf
+echo 'timezone=UTC' >> /etc/my.cnf
 systemctl enable mariadb.service
 systemctl enable httpd.service
 firewall-cmd --permanent --add-port=3000/tcp
