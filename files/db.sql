@@ -120,6 +120,7 @@ CREATE TABLE `Tbl_RAU` (
   `p_set_scale` double DEFAULT NULL,
   `p_set_offset` double DEFAULT NULL,
   `rau_conf` text DEFAULT NULL,
+  `started` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Tbl_RAU_ibfk_1` (`gen_id`),
   KEY `Tbl_RAU_ibfk_2` (`rau_type_id`),
@@ -224,6 +225,7 @@ CREATE TABLE `system` (
 LOCK TABLES `system` WRITE;
 /*!40000 ALTER TABLE `system` DISABLE KEYS */;
 INSERT INTO `system`(`key`, `value`) VALUES ('ftp_host',''),('ftp_port',''),('ftp_username',''),('ftp_password',''),('ftp_remdir','');
+INSERT INTO `system`(`key`, `value`) VALUES ('smtp_host',''),('smtp_auth',''),('smtp_username',''),('smtp_password',''),('smtp_tls',''),('smtp_port',''),('smtp_receiver','');
 /*!40000 ALTER TABLE `system` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,5 +292,8 @@ INSERT INTO raus.tasks (name,description,period,enabled) VALUES
 	 ('archive_hires','archive_hires','{"hours":1}',1),
 	 ('cleanup_samples','cleanup_samples','{"hours":10}',1),
 	 ('process_samples','process_samples','{ "minutes": 10 }',1),
-	 ('ftp_transfer','ftp_transfer','{ "minutes": 30 }',1);
+	 ('ftp_transfer','ftp_transfer','{ "minutes": 30 }',1),
+	 ('watchdog','watchdog','{ "minutes": 10 }',1),
+	 ('mailer','mailer','{ "minutes": 10 }',1),
+	 ('aiprocessing','aiprocessing','{ "minutes": 10 }',1);
 
