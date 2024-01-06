@@ -7,6 +7,7 @@ dnf install https://rpm.nodesource.com/pub_21.x/nodistro/repo/nodesource-release
 update-crypto-policies --set DEFAULT:SHA1
 #update-crypto-policies --set DEFAULT
 dnf -y install nodejs --setopt=nodesource-nodejs.module_hotfixes=1
+dnf -y install make gcc-c++
 dnf -y update
 echo '[mysqld_safe]' >> /etc/my.cnf
 echo 'timezone=UTC' >> /etc/my.cnf
