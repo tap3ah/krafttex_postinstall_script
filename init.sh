@@ -3,7 +3,9 @@ dnf -y install mariadb
 dnf install -y mariadb-server
 dnf -y install httpd
 dnf -y install nano
-dnf install https://rpm.nodesource.com/pub_21.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
+curl -sL https://rpm.nodesource.com/setup_22.x -o nodesource_setup.sh
+chmod +x ./nodesource_setup.sh
+./nodesource_setup.sh
 update-crypto-policies --set DEFAULT:SHA1
 #update-crypto-policies --set DEFAULT
 dnf -y install nodejs --setopt=nodesource-nodejs.module_hotfixes=1
